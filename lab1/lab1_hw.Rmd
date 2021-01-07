@@ -34,10 +34,10 @@ R is a programming language while R studio uses the R language as well as provid
   
 **5. Did any of the results in #4 surprise you? Write two programs that calculate each expression such that the result for the first example is 4 and the second example is 16.**    
 ```{r}
-2*2
++(5-3) *2
 ```
 ```{r}
-20-2*2
++(8/2)**2
 ```
 
 
