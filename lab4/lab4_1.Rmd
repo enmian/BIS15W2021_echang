@@ -67,7 +67,7 @@ select(fish, "lakeid", "scalelength")
 
 To add a range of columns use `start_col:end_col`.
 ```{r}
-fish
+select(fish, length:scalelength)
 ```
 
 ```{r}
@@ -87,11 +87,13 @@ names(fish)
 
 ```{r}
 select(fish, contains("length"))
+select(fish, contains("l"))
 ```
 
 When columns are sequentially named, `starts_with()` makes selecting columns easier.
 ```{r}
 select(fish, starts_with("radii"))
+select(fish, starts_with("l"))
 ```
 
 Options to select columns based on a specific criteria include:  
@@ -106,6 +108,8 @@ names(fish)
 
 ```{r}
 select(fish, ends_with("id"))
+select(fish, matches("e"))
+select(fish, one_of("radii"))
 ```
 ```{r}
 select(fish, contains("fish"))
@@ -114,6 +118,7 @@ select(fish, contains("fish"))
 We won't cover [regex](https://en.wikipedia.org/wiki/Regular_expression) in this class, but the following code is helpful when you know that a column contains a letter (in this case "a") followed by a subsequent string (in this case "er").  
 ```{r}
 select(fish, matches("a.+er"))
+select(fish, matches("r.+mm"))
 ```
 
 You can also select columns based on the class of data.  
@@ -122,12 +127,14 @@ glimpse(fish)
 ```
 
 ```{r}
+select_if(fish, ~is.numeric(.))
 select_if(fish, is.numeric)
 ```
 
 To select all columns that are *not* a class of data, you need to add a `~`.
 ```{r}
 select_if(fish, ~!is.numeric(.))
+select_if(fish, ~!is.character(.))
 ```
 
 ## Practice  
@@ -149,11 +156,17 @@ glimpse(mammals)
 2. Are there any NAs? Are you sure? Try taking an average of `max. life` as a test.  
 ```{r}
 anyNA(mammals)
+#seems to be no NA
+mean(mammals$`max. life`)
 ```
 
 ```{r}
 x <- mammals[ 11]
 colMeans(x)
+y <- mammals[11]
+y
+x <- mammals[11, ]
+x
 ```
 
 ```{r}
@@ -201,7 +214,8 @@ Here are two examples of code that are super helpful to have in your bag of tric
 
 Imported data frames often have a mix of lower and uppercase column names. Use `toupper()` or `tolower()` to fix this issue. I always try to use lowercase to keep things consistent.  
 ```{r}
-mammals <- select_all(mammals, tolower)
+mammals <- select_all(mammals, ~tolower(.))
+
 ```
 
 ```{r}
@@ -211,6 +225,7 @@ names(mammals)
 When naming columns, blank spaces are often added (don't do this, please). Here is a trick to remove these.  
 ```{r}
 select_all(mammals, ~str_replace(., " ", "_"))
+names(mammals)
 ```
 
 ## That's it! Take a break and I will see you on Zoom!  
