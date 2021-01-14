@@ -86,7 +86,8 @@ Smaller animals sleep longer on average.
 10. Which animal is the sleepiest among the entire dataframe?
 ```{r}
 summary(sleep$sleep_total)
-View(sleep)
+sleepiest_animal <- subset(sleep, max(sleep$sleep_total))
+
 #used search function
 #The little brown bat at 19.9 hrs a day
 ```
