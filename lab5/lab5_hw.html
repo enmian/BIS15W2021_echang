@@ -11,7 +11,7 @@
 
 <meta name="author" content="Please Add Your Name Here" />
 
-<meta name="date" content="2021-01-19" />
+<meta name="date" content="2021-01-21" />
 
 <title>Lab 5 Homework</title>
 
@@ -437,7 +437,7 @@ summary {
 
 <h1 class="title toc-ignore">Lab 5 Homework</h1>
 <h4 class="author">Please Add Your Name Here</h4>
-<h4 class="date">2021-01-19</h4>
+<h4 class="date">2021-01-21</h4>
 
 </div>
 
@@ -737,23 +737,27 @@ bad_guys &lt;- filter(superhero_info, alignment==&quot;bad&quot;)</code></pre>
 ## # ... with 25 more rows, and 1 more variable: weight &lt;dbl&gt;</code></pre>
 <pre class="r"><code>#There are more good guys who are bald.</code></pre>
 <ol start="10" style="list-style-type: decimal">
-<li>Let’s explore who the really “big” superheros are. In the <code>superhero_info</code> data, which have a height over 200 or weight over 300?</li>
+<li>Let’s explore who the really “big” superheros are. In the <code>superhero_info</code> data, which have a height over 300 or weight over 450?</li>
 </ol>
-<pre class="r"><code>filter(superhero_info, height&gt;200 | weight&gt;300)</code></pre>
-<pre><code>## # A tibble: 65 x 10
+<pre class="r"><code>filter(superhero_info, height&gt;300 | weight&gt;450)</code></pre>
+<pre><code>## # A tibble: 14 x 10
 ##    name  gender eye_color race  hair_color height publisher skin_color alignment
 ##    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    
-##  1 A-Bo~ Male   yellow    Human No Hair       203 Marvel C~ &lt;NA&gt;       good     
-##  2 Abom~ Male   green     Huma~ No Hair       203 Marvel C~ &lt;NA&gt;       bad      
-##  3 Alien Male   &lt;NA&gt;      Xeno~ No Hair       244 Dark Hor~ black      bad      
-##  4 Amazo Male   red       Andr~ &lt;NA&gt;          257 DC Comics &lt;NA&gt;       bad      
-##  5 Ant-~ Male   blue      Human Blond         211 Marvel C~ &lt;NA&gt;       good     
-##  6 Anti~ Male   blue      Symb~ Blond         229 Marvel C~ &lt;NA&gt;       &lt;NA&gt;     
-##  7 Apoc~ Male   red       Muta~ Black         213 Marvel C~ grey       bad      
-##  8 Bane  Male   &lt;NA&gt;      Human &lt;NA&gt;          203 DC Comics &lt;NA&gt;       bad      
-##  9 Beta~ Male   &lt;NA&gt;      &lt;NA&gt;  No Hair       201 Marvel C~ &lt;NA&gt;       good     
-## 10 Bloo~ Female blue      Human Brown         218 Marvel C~ &lt;NA&gt;       bad      
-## # ... with 55 more rows, and 1 more variable: weight &lt;dbl&gt;</code></pre>
+##  1 Bloo~ Female blue      Human Brown       218   Marvel C~ &lt;NA&gt;       bad      
+##  2 Dark~ Male   red       New ~ No Hair     267   DC Comics grey       bad      
+##  3 Fin ~ Male   red       Kaka~ No Hair     975   Marvel C~ green      good     
+##  4 Gala~ Male   black     Cosm~ Black       876   Marvel C~ &lt;NA&gt;       neutral  
+##  5 Giga~ Female green     &lt;NA&gt;  Red          62.5 DC Comics &lt;NA&gt;       bad      
+##  6 Groot Male   yellow    Flor~ &lt;NA&gt;        701   Marvel C~ &lt;NA&gt;       good     
+##  7 Hulk  Male   green     Huma~ Green       244   Marvel C~ green      good     
+##  8 Jugg~ Male   blue      Human Red         287   Marvel C~ &lt;NA&gt;       neutral  
+##  9 MODOK Male   white     Cybo~ Brownn      366   Marvel C~ &lt;NA&gt;       bad      
+## 10 Onsl~ Male   red       Muta~ No Hair     305   Marvel C~ &lt;NA&gt;       bad      
+## 11 Red ~ Male   yellow    Huma~ Black       213   Marvel C~ red        neutral  
+## 12 Sasq~ Male   red       &lt;NA&gt;  Orange      305   Marvel C~ &lt;NA&gt;       good     
+## 13 Wolf~ Female green     &lt;NA&gt;  Auburn      366   Marvel C~ &lt;NA&gt;       good     
+## 14 Ymir  Male   white     Fros~ No Hair     305.  Marvel C~ white      good     
+## # ... with 1 more variable: weight &lt;dbl&gt;</code></pre>
 <ol start="11" style="list-style-type: decimal">
 <li>Just to be clear on the <code>|</code> operator, have a look at the superheros over 300 in height…</li>
 </ol>
@@ -786,32 +790,32 @@ bad_guys &lt;- filter(superhero_info, alignment==&quot;bad&quot;)</code></pre>
 ## 7 Sasq~ Male   red       &lt;NA&gt;  Orange      305   Marvel C~ &lt;NA&gt;       good     
 ## 8 Wolf~ Female green     &lt;NA&gt;  Auburn      366   Marvel C~ &lt;NA&gt;       good     
 ## # ... with 1 more variable: weight &lt;dbl&gt;</code></pre>
-<pre class="r"><code>#10 tests height&gt;200 and weight&gt;300 while 11 asks for height&gt;300 and weight&gt;450. The requirements are more stringent so the results are fewer.</code></pre>
+<pre class="r"><code>#We don&#39;t have 16 rows because the | operator includes superheroes that have both height&gt;300 AND weight&gt;450. When you separate the two groups, some superheroes that have both are double counted.</code></pre>
 </div>
 <div id="height-to-weight-ratio" class="section level2">
 <h2>Height to Weight Ratio</h2>
 <ol start="13" style="list-style-type: decimal">
-<li>It’s easy to be strong when you are heavy and tall, but who is heavy and short? Which superheros have the highest height to weight ratio?</li>
+<li>It’s easy to be strong when you are heavy and tall, but who is heavy and short? Which superheros have the lowest height to weight ratio?</li>
 </ol>
 <pre class="r"><code>superhero_info %&gt;%
   mutate(height_weight_ratio = height/weight) %&gt;%
   select(name, height_weight_ratio) %&gt;%
-  arrange(desc(height_weight_ratio))</code></pre>
+  arrange(height_weight_ratio)</code></pre>
 <pre><code>## # A tibble: 734 x 2
-##    name            height_weight_ratio
-##    &lt;chr&gt;                         &lt;dbl&gt;
-##  1 Groot                        175.  
-##  2 Galactus                      54.8 
-##  3 Fin Fang Foom                 54.2 
-##  4 Longshot                       5.22
-##  5 Jack-Jack                      5.07
-##  6 Rocket Raccoon                 4.88
-##  7 Dash                           4.52
-##  8 Howard the Duck                4.39
-##  9 Swarm                          4.17
-## 10 Yoda                           3.88
+##    name        height_weight_ratio
+##    &lt;chr&gt;                     &lt;dbl&gt;
+##  1 Giganta                  0.0992
+##  2 Utgard-Loki              0.262 
+##  3 Darkseid                 0.327 
+##  4 Juggernaut               0.336 
+##  5 Red Hulk                 0.338 
+##  6 Sasquatch                0.339 
+##  7 Hulk                     0.387 
+##  8 Bloodaxe                 0.440 
+##  9 Thanos                   0.454 
+## 10 A-Bomb                   0.460 
 ## # ... with 724 more rows</code></pre>
-<pre class="r"><code>#Groot, Galactus, and Fin Fang Foom have the lowest height to weight ratio.</code></pre>
+<pre class="r"><code>#Giganta, Utgard-Loki, and Darkseid have the lowest height to weight ratio.</code></pre>
 </div>
 <div id="superhero_powers" class="section level2">
 <h2><code>superhero_powers</code></h2>

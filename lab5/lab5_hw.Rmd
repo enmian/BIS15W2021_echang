@@ -107,9 +107,9 @@ filter(bad_guys, hair_color=="No Hair")
 #There are more good guys who are bald.
 ```
 
-10. Let's explore who the really "big" superheros are. In the `superhero_info` data, which have a height over 200 or weight over 300?
+10. Let's explore who the really "big" superheros are. In the `superhero_info` data, which have a height over 300 or weight over 450?
 ```{r}
-filter(superhero_info, height>200 | weight>300)
+filter(superhero_info, height>300 | weight>450)
 ```
 
 11. Just to be clear on the `|` operator,  have a look at the superheros over 300 in height...
@@ -120,17 +120,17 @@ filter(superhero_info, height>300)
 12. ...and the superheros over 450 in weight. Bonus question! Why do we not have 16 rows in question #10?
 ```{r}
 filter(superhero_info, weight>450)
-#10 tests height>200 and weight>300 while 11 asks for height>300 and weight>450. The requirements are more stringent so the results are fewer.
+#We don't have 16 rows because the | operator includes superheroes that have both height>300 AND weight>450. When you separate the two groups, some superheroes that have both are double counted.
 ```
 
 ## Height to Weight Ratio
-13. It's easy to be strong when you are heavy and tall, but who is heavy and short? Which superheros have the highest height to weight ratio?
+13. It's easy to be strong when you are heavy and tall, but who is heavy and short? Which superheros have the lowest height to weight ratio?
 ```{r}
 superhero_info %>%
   mutate(height_weight_ratio = height/weight) %>%
   select(name, height_weight_ratio) %>%
-  arrange(desc(height_weight_ratio))
-#Groot, Galactus, and Fin Fang Foom have the lowest height to weight ratio.
+  arrange(height_weight_ratio)
+#Giganta, Utgard-Loki, and Darkseid have the lowest height to weight ratio.
 ```
 
 ## `superhero_powers`
