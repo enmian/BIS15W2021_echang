@@ -1,7 +1,7 @@
 ---
 title: "Lab 4 Homework"
 author: "Enmian Chang"
-date: "2021-01-16"
+date: "2021-01-20"
 output:
   html_document: 
     theme: spacelab
@@ -31,12 +31,13 @@ Data: http://datadryad.org/resource/doi:10.5061/dryad.q5j65/1
 **1. Load the data into a new object called `homerange`.**
 
 ```r
-setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/lab4/data")
-homerange <- readr::read_csv("Tamburelloetal_HomeRangeDatabase.csv")
+#setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/lab4/data")
+homerange <- readr::read_csv("data/Tamburelloetal_HomeRangeDatabase.csv")
 ```
 
 ```
-## Parsed with column specification:
+## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   .default = col_character(),
 ##   mean.mass.g = col_double(),
@@ -47,10 +48,7 @@ homerange <- readr::read_csv("Tamburelloetal_HomeRangeDatabase.csv")
 ##   log10.preymass = col_double(),
 ##   PPMR = col_double()
 ## )
-```
-
-```
-## See spec(...) for full column specifications.
+## i Use `spec()` for the full column specifications.
 ```
 
 **2. Explore the data. Show the dimensions, column names, classes for each variable, and a statistical summary. Keep these as separate code chunks.**  

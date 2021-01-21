@@ -1,7 +1,7 @@
 ---
 title: "Lab 3 Homework"
 author: "Please Add Your Name Here"
-date: "2021-01-14"
+date: "2021-01-19"
 output:
   html_document: 
     theme: spacelab
@@ -20,20 +20,23 @@ library(tidyverse)
 ```
 
 ## Mammals Sleep
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+
 1. For this assignment, we are going to use built-in data on mammal sleep patterns. From which publication are these data taken from? Since the data are built-in you can use the help function in R.
 
 ```r
-install.packages('ggplot2')
-```
-
-```
-## Warning: package 'ggplot2' is in use and will not be installed
-```
-
-```r
+#install.packages('ggplot2')
 library(ggplot2)
 data(msleep)
 ```
+
+</div>
+
 
 2. Store these data into a new data frame `sleep`.
 
@@ -409,18 +412,15 @@ Smaller animals sleep longer on average.
 10. Which animal is the sleepiest among the entire dataframe?
 
 ```r
-summary(sleep$sleep_total)
+sleepiest_animal <- subset(sleep, sleep$sleep_total == max(sleep$sleep_total))
+sleepiest_animal
 ```
 
 ```
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    1.90    7.85   10.10   10.43   13.75   19.90
-```
-
-```r
-View(sleep)
-#used search function
-#The little brown bat at 19.9 hrs a day
+##                name  genus    vore      order conservation sleep_total
+## 43 Little brown bat Myotis insecti Chiroptera         <NA>        19.9
+##    sleep_rem sleep_cycle awake brainwt bodywt
+## 43         2         0.2   4.1 0.00025   0.01
 ```
 
 ## Push your final code to GitHub!
