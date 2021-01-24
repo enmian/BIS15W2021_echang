@@ -128,14 +128,20 @@ msleep %>%
 ## Practice
 1. What is the mean, min, and max `bodywt` for the taxonomic order Primates? Provide the total number of observations.
 ```{r}
-
+names(msleep)
+msleep %>%
+  filter(order == "Primates") %>%
+  summarize(mean_bodywt = mean(bodywt),
+            min_bodywt = min(bodywt),
+            max_bodywt = max(bodywt),
+            total = n())
 ```
 
 `n_distinct()` is a very handy way of cleanly presenting the number of distinct observations. Here we show the number of distinct genera over 100 in body weight.
 ```{r}
 msleep %>% 
   filter(bodywt > 100) %>% 
-  summarise(n_genera=n_distinct(genus))
+  summarize(n_genera=n_distinct(genus))
 ```
 
 There are many other useful summary statistics, depending on your needs: sd(), min(), max(), median(), sum(), n() (returns the length of a column), first() (returns first value in a column), last() (returns last value in a column) and n_distinct() (number of distinct values in a column).
@@ -143,12 +149,14 @@ There are many other useful summary statistics, depending on your needs: sd(), m
 ## Practice
 1. How many genera are represented in the msleep data frame?
 ```{r}
-
+msleep %>%
+  summarize(n_genera = n_distinct(genus))
 ```
 
 2. What are the min, max, and mean `sleep_total` for all of the mammals? Be sure to include the total n.
 ```{r}
-
+msleep %>%
+  summarize(min_sleep = min(sleep_total), max_sleep = max(sleep_total), mean_sleep = mean(sleep_total), total = n())
 ```
 
 ## `group_by()`
@@ -165,15 +173,19 @@ msleep %>%
 ## Practice
 1. Calculate mean brain weight by taxonomic order in the msleep data.
 ```{r}
-
+msleep %>%
+  group_by(order) %>%
+  summarize(mean_brain_wt = mean(brainwt))
 ```
 
 2. What does `NA` mean? How are NA's being treated by the summarize function?
-
+NA's are shown as NA.
 
 3. Try running the code again, but this time add `na.rm=TRUE`. What is the problem with Cetacea? Compare this to Carnivora. 
 ```{r}
-
+msleep %>%
+  group_by(order) %>%
+  summarize(mean_brain_wt = mean(brainwt, na.rm = T))
 ```
 
 ## That's it! Take a break and I will see you on Zoom!  

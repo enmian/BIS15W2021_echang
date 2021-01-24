@@ -120,7 +120,10 @@ penguins %>%
 
 3. For some penguins, their sex is listed as NA. Where do these penguins occur?
 ```{r}
-
+names(penguins)
+penguins %>%
+  filter(is.na(sex)) %>%
+  select(species, sex)
 ```
 
 ## `across()`
@@ -175,7 +178,13 @@ penguins %>%
 ## Practice
 1. Produce separate summaries of the mean and standard deviation for bill_length_mm, bill_depth_mm, and flipper_length_mm for each penguin species. Be sure to provide the number of samples.  
 ```{r}
+penguins %>%
+  group_by(species) %>%
+  summarize(across(c(bill_length_mm, bill_depth_mm, flipper_length_mm), mean, na.rm = T), total = n())
 
+penguins %>%
+  group_by(species) %>%
+  summarize(across(contains("mm"), sd, na.rm = T), total = n())
 ```
 
 
