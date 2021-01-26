@@ -1,7 +1,7 @@
 ---
 title: "Lab 5 Homework"
 author: "Please Add Your Name Here"
-date: "2021-01-21"
+date: "2021-01-25"
 output:
   html_document: 
     theme: spacelab
@@ -31,7 +31,8 @@ superhero_info <- readr::read_csv("data/heroes_information.csv", na = c("", "-99
 ```
 
 ```
-## Parsed with column specification:
+## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   name = col_character(),
 ##   Gender = col_character(),
@@ -51,15 +52,13 @@ superhero_powers <- readr::read_csv("data/super_hero_powers.csv", na = c("", "-9
 ```
 
 ```
-## Parsed with column specification:
+## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   .default = col_logical(),
 ##   hero_names = col_character()
 ## )
-```
-
-```
-## See spec(...) for full column specifications.
+## i Use `spec()` for the full column specifications.
 ```
 
 ## Data tidy
@@ -141,10 +140,6 @@ The [janitor](https://garthtarr.github.io/meatR/janitor.html) package is your fr
 
 ```r
 library("janitor")
-```
-
-```
-## Warning: package 'janitor' was built under R version 4.0.3
 ```
 
 ```
@@ -326,6 +321,10 @@ filter(good_guys, race=="Asgardian")
 ## 3 Thor~ Female blue      Asga~ Blond         175 Marvel C~ <NA>       good     
 ## # ... with 1 more variable: weight <dbl>
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 8. Among the bad guys, who are the male humans over 200 inches in height?
 
@@ -349,6 +348,7 @@ filter(bad_guys, gender=="Male" & height>200)
 ## 10 Kill~ Male   red       Meta~ No Hair       244 DC Comics green      bad      
 ## # ... with 12 more rows, and 1 more variable: weight <dbl>
 ```
+</div>
 
 9. OK, so are there more good guys or bad guys that are bald (personal interest)?
 
@@ -681,6 +681,10 @@ glimpse(superhero_powers)
 ## $ omnipresent                  <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FAL...
 ## $ omniscient                   <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FAL...
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 14. How many superheros have a combination of accelerated healing, durability, and super strength?
 
@@ -741,6 +745,12 @@ filter(superhero_powers, accelerated_healing==T | durability==T | super_strength
 ```r
 #10 superheroes 
 ```
+</div>
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 ## `kinesis`
 15. We are only interested in the superheros that do some kind of "kinesis". How would we isolate them from the `superhero_powers` data?
@@ -767,6 +777,8 @@ superhero_powers %>%
 ## # ... with 657 more rows, and 4 more variables: thirstokinesis <lgl>,
 ## #   biokinesis <lgl>, terrakinesis <lgl>, vitakinesis <lgl>
 ```
+</div>
+
 
 16. Pick your favorite superhero and let's see their powers!
 
