@@ -1,7 +1,7 @@
 ---
 title: "Lab 6 Homework"
 author: "Enmian Chang"
-date: "2021-01-23"
+date: "2021-01-26"
 output:
   html_document: 
     theme: spacelab
@@ -28,21 +28,19 @@ For this assignment we are going to work with a large data set from the [United 
 Load the data `FAO_1950to2012_111914.csv` as a new object titled `fisheries`.
 
 ```r
-setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/lab6/data")
-fisheries <- readr::read_csv("FAO_1950to2012_111914.csv")
+#setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/lab6/data")
+fisheries <- readr::read_csv("data/FAO_1950to2012_111914.csv")
 ```
 
 ```
-## Parsed with column specification:
+## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   .default = col_character(),
 ##   `ISSCAAP group#` = col_double(),
 ##   `FAO major fishing area` = col_double()
 ## )
-```
-
-```
-## See spec(...) for full column specifications.
+## i Use `spec()` for the full column specifications.
 ```
 
 1. Do an exploratory analysis of the data (your choice). What are the names of the variables, what are the dimensions, are there any NA's, what are the classes of the variables?  
@@ -228,7 +226,7 @@ fisheries_tidy %>%
 ```
 ## # A tibble: 203 x 2
 ##    country                 n
-##    <fct>               <int>
+##  * <fct>               <int>
 ##  1 Albania               934
 ##  2 Algeria              1561
 ##  3 American Samoa        556
@@ -293,6 +291,10 @@ fisheries_tidy %>%
 ##              <int>
 ## 1             1551
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 6. Which country had the largest overall catch in the year 2000?
 
@@ -429,6 +431,7 @@ fisheries_tidy %>%
 ```r
 #Xiphias gladius
 ```
+</div>
 
 10. Use the data to do at least one analysis of your choice.
 
