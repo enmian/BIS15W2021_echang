@@ -1,7 +1,7 @@
 ---
 title: "Midterm 1"
 author: "Enmian Chang"
-date: "2021-01-26"
+date: "2021-02-02"
 output:
   html_document: 
     theme: spacelab
@@ -34,15 +34,21 @@ The 3 types of data structures are vectors, matrices, and data framges. We use d
 
 In the midterm 1 folder there is a second folder called `data`. Inside the `data` folder, there is a .csv file called `ElephantsMF`. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana)," Biology Letters, 9: 20130011. [kaggle](https://www.kaggle.com/mostafaelseidy/elephantsmf).  
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 **3. (2 points) Please load these data as a new object called `elephants`. Use the function(s) of your choice to get an idea of the structure of the data. Be sure to show the class of each variable.**
 
 ```r
-setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/midterm 1/data")
-elephants <- readr::read_csv("ElephantsMF.csv")
+#setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/midterm 1/data") #This path doesn't work for other people.
+elephants <- readr::read_csv("data/ElephantsMF.csv")
 ```
 
 ```
-## Parsed with column specification:
+## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   Age = col_double(),
 ##   Height = col_double(),
@@ -61,16 +67,13 @@ glimpse(elephants)
 ## $ Height <dbl> 120.00, 227.00, 235.00, 210.00, 220.00, 189.00, 225.00, 204....
 ## $ Sex    <chr> "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", ...
 ```
+</div>
 
 
 **4. (2 points) Change the names of the variables to lower case and change the class of the variable `sex` to a factor.**
 
 ```r
 library(janitor)
-```
-
-```
-## Warning: package 'janitor' was built under R version 4.0.3
 ```
 
 ```
@@ -142,13 +145,9 @@ elephants %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 4
 ##   sex   ave_age ave_height total
-##   <fct>   <dbl>      <dbl> <int>
+## * <fct>   <dbl>      <dbl> <int>
 ## 1 F       12.8        190.   150
 ## 2 M        8.95       185.   138
 ```
@@ -167,13 +166,9 @@ elephants %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 5
 ##   sex   ave_height min_height max_height total
-##   <fct>      <dbl>      <dbl>      <dbl> <int>
+## * <fct>      <dbl>      <dbl>      <dbl> <int>
 ## 1 F           233.       206.       278.    25
 ## 2 M           273.       237.       304.     8
 ```
@@ -182,24 +177,27 @@ For the next series of questions, we will use data from a study on vertebrate co
 
 Reference: Koerner SE, Poulsen JR, Blanchard EJ, Okouyi J, Clark CJ. Vertebrate community composition and diversity declines along a defaunation gradient radiating from rural villages in Gabon. _Journal of Applied Ecology_. 2016. This paper, along with a description of the variables is included inside the midterm 1 folder.  
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 **9. (2 points) Load `IvindoData_DryadVersion.csv` and use the function(s) of your choice to get an idea of the overall structure. Change the variables `HuntCat` and `LandUse` to factors.**
 
 ```r
-setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/midterm 1/data")
-dryad <- readr::read_csv("IvindoData_DryadVersion.csv")
+#setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/midterm 1/data")
+dryad <- readr::read_csv("data/IvindoData_DryadVersion.csv")
 ```
 
 ```
-## Parsed with column specification:
+## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   .default = col_double(),
 ##   HuntCat = col_character(),
 ##   LandUse = col_character()
 ## )
-```
-
-```
-## See spec(...) for full column specifications.
+## i Use `spec()` for the full column specifications.
 ```
 
 ```r
@@ -241,6 +239,7 @@ glimpse(dryad)
 dryad$HuntCat <- as.factor(dryad$HuntCat)
 dryad$LandUse <- as.factor(dryad$LandUse)
 ```
+</div>
 
 **10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?**
 
@@ -252,13 +251,9 @@ dryad %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 3
 ##   HuntCat  ave_bird_div ave_mammal_div
-##   <fct>           <dbl>          <dbl>
+## * <fct>           <dbl>          <dbl>
 ## 1 High             1.66           1.74
 ## 2 Moderate         1.62           1.68
 ```
@@ -297,13 +292,9 @@ dryad %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 6 x 7
 ##   Distance RA_Apes RA_Birds RA_Elephant RA_Monkeys RA_Rodent RA_Ungulate
-##      <dbl>   <dbl>    <dbl>       <dbl>      <dbl>     <dbl>       <dbl>
+## *    <dbl>   <dbl>    <dbl>       <dbl>      <dbl>     <dbl>       <dbl>
 ## 1     2.7     0        85.0       0.290       9.09      3.74        1.86
 ## 2     2.92    0.24     68.2       0          25.6       4.05        1.88
 ## 3     3.83    0        57.8       0          37.8       3.19        1.04
@@ -328,13 +319,9 @@ dryad %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 7
 ##   LandUse Veg_Rich Veg_Stems Veg_liana Veg_DBH Veg_Canopy Veg_Understory
-##   <fct>      <dbl>     <dbl>     <dbl>   <dbl>      <dbl>          <dbl>
+## * <fct>      <dbl>     <dbl>     <dbl>   <dbl>      <dbl>          <dbl>
 ## 1 Logging     14.4      33.5     11.6     45.4       3.50           3.00
 ## 2 Park        16.3      33.5      9.76    44         3.60           3.04
 ```
