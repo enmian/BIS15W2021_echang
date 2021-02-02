@@ -35,12 +35,18 @@ The 3 types of data structures are vectors, matrices, and data framges. We use d
 
 In the midterm 1 folder there is a second folder called `data`. Inside the `data` folder, there is a .csv file called `ElephantsMF`. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana)," Biology Letters, 9: 20130011. [kaggle](https://www.kaggle.com/mostafaelseidy/elephantsmf).  
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 **3. (2 points) Please load these data as a new object called `elephants`. Use the function(s) of your choice to get an idea of the structure of the data. Be sure to show the class of each variable.**
 ```{r}
-setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/midterm 1/data")
-elephants <- readr::read_csv("ElephantsMF.csv")
+#setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/midterm 1/data") #This path doesn't work for other people.
+elephants <- readr::read_csv("data/ElephantsMF.csv")
 glimpse(elephants)
 ```
+</div>
 
 
 **4. (2 points) Change the names of the variables to lower case and change the class of the variable `sex` to a factor.**
@@ -85,14 +91,20 @@ For the next series of questions, we will use data from a study on vertebrate co
 
 Reference: Koerner SE, Poulsen JR, Blanchard EJ, Okouyi J, Clark CJ. Vertebrate community composition and diversity declines along a defaunation gradient radiating from rural villages in Gabon. _Journal of Applied Ecology_. 2016. This paper, along with a description of the variables is included inside the midterm 1 folder.  
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 **9. (2 points) Load `IvindoData_DryadVersion.csv` and use the function(s) of your choice to get an idea of the overall structure. Change the variables `HuntCat` and `LandUse` to factors.**
 ```{r}
-setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/midterm 1/data")
-dryad <- readr::read_csv("IvindoData_DryadVersion.csv")
+#setwd("C:/Users/enmia/OneDrive/Desktop/GitHub/BIS15W2021_echang/midterm 1/data")
+dryad <- readr::read_csv("data/IvindoData_DryadVersion.csv")
 glimpse(dryad)
 dryad$HuntCat <- as.factor(dryad$HuntCat)
 dryad$LandUse <- as.factor(dryad$LandUse)
 ```
+</div>
 
 **10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?**
 ```{r}
